@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Poppins, sans-serif;
+}
+
+#content {
+  position: relative;
+}
+
+#opening {
+  display: grid;
+  grid-template-areas: "about locations";
+  grid-template-columns: 1fr 1fr;
+  column-gap: 5rem;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #bb5555;
+  padding: 3rem;
+  padding-inline: 5rem;
+  box-sizing: border-box;
+}
+
+#about h1 {
+  font-size: 7rem;
+}
+
+#about p {
+  font-size: 1.5rem;
+}
+
+#about {
+  grid-area: about;
+}
+
+#locations {
+  grid-area: locations;
+}
+
+.location {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background: #222222;
+  border-radius: 30px;
+  align-items: center;
+  padding: 2rem;
+  margin-block: 3rem;
+  box-shadow: #992222 10px 10px;
+  transition: transform 300ms ease-out;
+}
+
+.location p {
+  font-size: 1.5rem;
+  color: #f7efe1;
+}
+
+.location h1 {
+  font-size: 5rem;
+  color: #f7efe1;
+}
+
+.location:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+@media screen and (max-width: 1350px) {
+  #opening {
+    padding: 2rem;
+    display: block;
+  }
+
+  #about h1 {
+    text-align: center;
+    font-size: 3rem;
+  }
+
+  .location h1 {
+    font-size: 3rem;
+  }
+
+  #about p {
+    font-size: 1.2rem;
+  }
+}
