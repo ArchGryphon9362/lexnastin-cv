@@ -6,29 +6,62 @@
   font-family: Poppins, sans-serif;
 }
 
+html,
+body,
 #content {
-  position: relative;
+  height: 100%;
 }
 
 #opening {
+  position: relative;
   display: grid;
   grid-template-areas: "about locations";
   grid-template-columns: 1fr 1fr;
   column-gap: 5rem;
   align-items: center;
   min-height: 100vh;
+  overflow: hidden;
   background-color: #bb5555;
   padding: 3rem;
   padding-inline: 5rem;
   box-sizing: border-box;
+  clip-path: inset(0 0 0 0);
+  transition-property: clip-path, align-items, padding;
+  transition-duration: 300ms, 300ms, 300ms;
+  transition-timing-function: ease-out, ease-out, ease-out;
+}
+
+.inactive[id="opening"] {
+  clip-path: inset(0 0 calc(100% - 10rem) 0) !important;
+  min-height: 0 !important;
+  height: 10rem !important;
+  align-items: start !important;
+}
+
+.inactive[id="opening"] #about p,
+.inactive[id="opening"] #locations {
+  filter: opacity(0);
+}
+
+.inactive[id="opening"] #about h1 {
+  position: absolute;
+  top: 1.25rem;
+  left: 2rem;
+  font-size: 5rem;
+}
+
+.inactive:not([id="opening"]) {
+  display: none !important;
 }
 
 #about h1 {
   font-size: 7rem;
+  transition: font-size 300ms ease-out;
 }
 
 #about p {
   font-size: 1.5rem;
+  transition: filter 300ms ease-out;
 }
 
 #about {
@@ -37,6 +70,7 @@
 
 #locations {
   grid-area: locations;
+  transition: filter 300ms ease-out;
 }
 
 .location {

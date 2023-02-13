@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" data-scroll="0">
+<html lang="en">
   <head>
     <title>Lex Nastin's CV</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="css/style.css" rel="stylesheet" />
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
   </head>
   <body>
     <div id="content">
@@ -14,7 +14,7 @@
           <h1>Hey, I'm Lex!</h1>
           <p>
             I'm a Leaving Cert student in Ireland. I have been interested in
-            programming ever since I was 5, and my skills have been advancing
+            programming ever since I was 5 and my skills have been advancing
             with every year. I love to both create things, and figure out how
             things work under the hood. Whenever I want to do something I’ll
             quickly figure out what is needed, and will learn as I’m creating!
@@ -25,19 +25,32 @@
           </p>
           <p><b>Education:</b> 5th Year - Leaving Certificate</p>
         </div>
+
         <div id="locations">
-          <div class="location">
+          <div class="location" onclick="navigate('info', true)">
             <h1>Info</h1>
           </div>
-          <div class="location">
+          <div class="location" onclick="navigate('projects', true)">
             <h1>Projects</h1>
           </div>
-          <div class="location">
+          <div
+            class="location"
+            onclick="window.location.href = 'mailto:lex@lexnastin.com'"
+          >
             <h1>Contact Me</h1>
             <p>lex@lexnastin.com</p>
           </div>
         </div>
       </div>
+
+      <div id="info" class="inactive">
+        <p>hi</p>
+      </div>
+
+      <div id="projects" class="inactive"></div>
     </div>
+    <script>
+      /* Firefox FOUC Fix */
+    </script>
   </body>
 </html>
