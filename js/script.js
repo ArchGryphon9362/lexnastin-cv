@@ -4,13 +4,14 @@ function navigate(to, push) {
     push = false;
     history.pushState({ page: to }, "", `/`);
   }
+  if (push) history.pushState({ page: to }, "", `?page=${to}`);
+  document.title = "Lex Nastin's CV" + (to ? ` - ${to}` : "");
   if (!to) {
     to = "title";
   }
   ["title", "info", "projects"].forEach((item) => {
     let classList = document.getElementById(item).classList;
     if (item == to) {
-      if (push) history.pushState({ page: to }, "", `?page=${to}`);
       classList.remove("inactive");
     } else {
       classList.add("inactive");

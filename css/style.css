@@ -1,15 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
-@keyframes fix-height {
+@keyframes set-inactive {
   to {
     min-height: 0;
     height: 0;
-  }
-}
-
-@keyframes set-inactive {
-  to {
-    display: none !important;
+    overflow: hidden;
   }
 }
 
@@ -48,6 +43,7 @@ body,
   /* transition-duration: 300ms, 300ms, 300ms; */
   /* transition-timing-function: ease-out, ease-out, ease-out; */
   transform: translateY(-10rem);
+  z-index: 1;
 }
 
 #opening {
@@ -63,20 +59,33 @@ body,
   align-items: center;
 }
 
-.inactive[id="title"] {
-  clip-path: inset(0 0 calc(100% - 10rem) 0) !important;
-  transform: translateY(0) !important;
-  /* align-items: start !important; */
+#title.inactive {
+  clip-path: inset(0 0 calc(100% - 10rem) 0);
+  transform: translateY(0);
+  /* align-items: start */
 }
 
-.inactive[id="title"] #opening {
-  animation: fix-height 0s linear 400ms forwards !important;
+#title.inactive #opening {
+  animation: set-inactive 0s linear 400ms forwards;
   /* transform: translateY(100%); */
 }
 
-.inactive:not([id="title"]) {
-  animation: set-inactive 0s linear 400ms forwards !important;
-  /* display: none !important; */
+/* #title.inactive ~ .inactive { */
+/*   display: none; */
+/* } */
+/**/
+/* #title:not(.inactive) ~ .inactive { */
+/*   animation: set-inactive 0s linear 400ms forwards; */
+/* } */
+
+#title ~ * {
+  transform: translateY(0);
+  transition: transform 400ms ease-out;
+}
+
+#title ~ .inactive {
+  transform: translateY(-100%);
+  animation: set-inactive 0s linear 400ms forwards;
 }
 
 #controls {
