@@ -78,9 +78,33 @@ body,
 /*   animation: set-inactive 0s linear 400ms forwards; */
 /* } */
 
+#controls-shadow {
+  content: "";
+  position: absolute;
+  top: 10rem;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: #333355;
+  z-index: 1;
+}
+
 #title ~ * {
+  position: absolute;
+  top: 10rem;
+  left: 0;
+  right: 0;
   transform: translateY(0);
   transition: transform 400ms ease-out;
+  /* box-shadow: inset #333355 0 10px; */
+  margin-top: 10px;
+  background: #444466;
+  padding: 2rem;
+}
+
+#title ~ * p {
+  font-size: 1.2rem;
+  color: #f7efe1;
 }
 
 #title ~ .inactive {
@@ -170,6 +194,9 @@ body,
 #back:hover {
   cursor: pointer;
   transform: scale(1.05);
+}
+
+#info {
 }
 
 @media screen and (max-width: 1700px) {
