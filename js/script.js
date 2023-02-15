@@ -1,24 +1,21 @@
 function navigate(to, push) {
   console.log(to);
-  switch (to) {
-    case "info":
-      document.getElementById("opening").classList.add("inactive");
-      document.getElementById("info").classList.remove("inactive");
-      document.getElementById("projects").classList.add("inactive");
-      push ? history.pushState({ page: "info" }, "", "?page=info") : "";
-      break;
-    case "projects":
-      document.getElementById("opening").classList.add("inactive");
-      document.getElementById("info").classList.add("inactive");
-      document.getElementById("projects").classList.remove("inactive");
-      push ? history.pushState({ page: "projects" }, "", "?page=projects") : "";
-      break;
-    default:
-      document.getElementById("opening").classList.remove("inactive");
-      document.getElementById("info").classList.add("inactive");
-      document.getElementById("projects").classList.add("inactive");
-      push ? history.pushState({ page: "" }, "", "") : "";
+  if (!to && push) {
+    push = false;
+    history.pushState({ page: to }, "", `/`);
   }
+  if (!to) {
+    to = "title";
+  }
+  ["title", "info", "projects"].forEach((item) => {
+    let classList = document.getElementById(item).classList;
+    if (item == to) {
+      if (push) history.pushState({ page: to }, "", `?page=${to}`);
+      classList.remove("inactive");
+    } else {
+      classList.add("inactive");
+    }
+  });
 }
 
 addEventListener("popstate", (state) => {
