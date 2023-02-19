@@ -252,4 +252,7 @@ body,
   #opening {
     display: block;
   }
+  .location:first-child {
+    margin-top: 2rem;
+  }
 }
