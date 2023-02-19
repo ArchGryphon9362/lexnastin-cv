@@ -180,6 +180,14 @@ body,
   transition: transform 300ms ease-out;
 }
 
+.location:first-child {
+  margin-top: 0;
+}
+
+.location:last-child {
+  margin-bottom: 0;
+}
+
 .location p {
   font-size: 1.5rem;
   color: #f7efe1;
